@@ -4,14 +4,17 @@ from telebot import types
 from gatet import Tele 
 token = '7383314239:AAHFal_jdJ9PAIsx9GxkYSVrkeaVdDwuPyQ'
 bot=telebot.TeleBot(token,parse_mode="HTML")
-
+suu = '/stop'
 @bot.message_handler(commands=["start"])
 def start(message):
 	bot.reply_to(message,"𝗦𝗲𝗻𝗱 𝗬𝗼𝘂𝗿 𝗖𝗼𝗺𝗯𝗼 𝗙𝗶𝗹𝗲")
 @bot.message_handler(commands=['stop'])
 def handle_stop(message):
-    bot.reply_to(message, "Stopping the bot...")
+    bot.reply_to(message, "𝗖𝗵𝗲𝗰𝗸𝗶𝗻𝗴 𝗦𝘁𝗼𝗽𝗽𝗲𝗱...")
     bot.stop_polling()
+@bot.message_handler(commands=['help'])
+def help(message):
+	bot.reply_to(message, "𝗛𝗼𝘄 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗲 𝗯𝗼𝘁\n𝗙𝗶𝗿𝘀𝘁 𝘀𝘁𝗮𝗿𝘁 𝘁𝗵𝗲 𝗯𝗼𝘁 𝘃𝗶𝗮 /start 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n𝗧𝗵𝗲𝗻 𝘂𝗽𝗹𝗼𝗮𝗱 𝘆𝗼𝘂𝗿 𝗰𝗼𝗺𝗯𝗼 𝗳𝗶𝗹𝗲\n𝗙𝗶𝗹𝗲 𝘀𝗵𝗼𝘂𝗹𝗱 𝗯𝗲 𝗮𝘀 .𝘁𝘅𝘁 𝗳𝗶𝗹𝗲\n𝗧𝗼 𝘀𝘁𝗼𝗽 𝘁𝗵𝗲 𝗯𝗼𝘁 𝘂𝘀𝗲 /stop 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n𝗗𝗼𝗻'𝘁 𝘂𝘀𝗲 𝗴𝗲𝗻 𝗰𝗰 𝘁𝗿𝘆 𝘁𝗼 𝘂𝘀𝗲 𝘀𝗰𝗿𝗮𝗽𝗲𝗱 𝗰𝗰\n𝗙𝗼𝗿 𝗮𝗻𝘆 𝗯𝘂𝗴 𝘆𝗼𝘂 𝗳𝗼𝘂𝗻𝗱 𝘀𝗲𝗻𝗱 𝗮 𝗺𝗲𝘀𝘀𝗮𝗴𝗲 𝗵𝗲𝗿𝗲 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿 : @fahimhossen27")
 @bot.message_handler(content_types=["document"])
 def main(message):
 	dd = 0
@@ -60,9 +63,11 @@ def main(message):
 				cm1 = types.InlineKeyboardButton(f"• {cc} •", callback_data='u8')
 				cm2 = types.InlineKeyboardButton(f"• ✅ 𝗖𝗵𝗮𝗿𝗴𝗲𝗱 : [ {ch} ] •", callback_data='x')
 				cm3 = types.InlineKeyboardButton(f"• ✅ 𝗔𝗽𝗿𝗼𝘃𝗲𝗱 : [ {live} ] •", callback_data='x')
-				cm4 = types.InlineKeyboardButton(f"• ❌ 𝗗𝗲𝗰𝗹𝗶𝗻𝗲𝗱  : [ {dd} ] •", callback_data='x')
+				cm4 = types.InlineKeyboardButton(f"• ❌ 𝗗𝗲𝗰𝗹𝗶𝗻𝗲𝗱 : [ {dd} ] •", callback_data='x')
 				cm5 = types.InlineKeyboardButton(f"• 📊 𝗧𝗼𝘁𝗮𝗹 : [ {total} ] •", callback_data='x')
-				mes.add(cm1, cm2, cm3, cm4, cm5)
+				cm6 = types.InlineKeyboardButton(f"• 𝗦𝘁𝗼𝗽 : [ {suu} ] •", callback_data='x')
+				
+				mes.add(cm1, cm2, cm3, cm4, cm5, cm6)
 				bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text=f'''𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 𝗬𝗼𝘂𝗿 𝗙𝗶𝗹𝗲.... 🗃️''', reply_markup=mes)
 				
 				try:
