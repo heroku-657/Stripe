@@ -65,7 +65,7 @@ def main(message):
 				cm3 = types.InlineKeyboardButton(f"• ✅ 𝗔𝗽𝗿𝗼𝘃𝗲𝗱 : [ {live} ] •", callback_data='x')
 				cm4 = types.InlineKeyboardButton(f"• ❌ 𝗗𝗲𝗰𝗹𝗶𝗻𝗲𝗱 : [ {dd} ] •", callback_data='x')
 				cm5 = types.InlineKeyboardButton(f"• 📊 𝗧𝗼𝘁𝗮𝗹 : [ {total} ] •", callback_data='x')
-				cm6 = types.InlineKeyboardButton(f"• 𝗦𝘁𝗼𝗽 •", callback_data='/stop')
+				cm6 = types.InlineKeyboardButton(f"• 𝗦𝘁𝗼𝗽 •", callback_data='stop')
 				
 				mes.add(cm1, cm2, cm3, cm4, cm5, cm6)
 				bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text=f'''𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 𝗬𝗼𝘂𝗿 𝗙𝗶𝗹𝗲.... 🗃️''', reply_markup=mes)
