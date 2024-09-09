@@ -8,6 +8,10 @@ bot=telebot.TeleBot(token,parse_mode="HTML")
 @bot.message_handler(commands=["start"])
 def start(message):
 	bot.reply_to(message,"𝗦𝗲𝗻𝗱 𝗬𝗼𝘂𝗿 𝗖𝗼𝗺𝗯𝗼 𝗙𝗶𝗹𝗲")
+@bot.message_handler(commands=['stop'])
+def handle_stop(message):
+    bot.reply_to(message, "Stopping the bot...")
+    bot.stop_polling()
 @bot.message_handler(content_types=["document"])
 def main(message):
 	dd = 0
