@@ -173,8 +173,10 @@ def main(message):
                         bot.reply_to(message, msg)
                     else:
                         dd += 1
+        except Exception as e:
+            print(f"Error processing document: {e}")
+            bot.reply_to(message, "There was an error processing your file. Please try again.")
     else:
         bot.reply_to(message, "You are not authorized to use this bot. Please contact the admin.")
-
-print("Bot is Running")
-bot.polling()
+        print("Bot is Running")
+        bot.polling()
