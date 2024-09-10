@@ -16,7 +16,7 @@ def handle_stop(message):
 def help(message):
 	bot.reply_to(message, "𝗛𝗼𝘄 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗲 𝗯𝗼𝘁\n𝗙𝗶𝗿𝘀𝘁 𝘀𝘁𝗮𝗿𝘁 𝘁𝗵𝗲 𝗯𝗼𝘁 𝘃𝗶𝗮 /start 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n𝗧𝗵𝗲𝗻 𝘂𝗽𝗹𝗼𝗮𝗱 𝘆𝗼𝘂𝗿 𝗰𝗼𝗺𝗯𝗼 𝗳𝗶𝗹𝗲\n𝗙𝗶𝗹𝗲 𝘀𝗵𝗼𝘂𝗹𝗱 𝗯𝗲 𝗮𝘀 .𝘁𝘅𝘁 𝗳𝗶𝗹𝗲\n𝗧𝗼 𝘀𝘁𝗼𝗽 𝘁𝗵𝗲 𝗯𝗼𝘁 𝘂𝘀𝗲 /stop 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n𝗗𝗼𝗻'𝘁 𝘂𝘀𝗲 𝗴𝗲𝗻 𝗰𝗰 𝘁𝗿𝘆 𝘁𝗼 𝘂𝘀𝗲 𝘀𝗰𝗿𝗮𝗽𝗲𝗱 𝗰𝗰\n𝗙𝗼𝗿 𝗮𝗻𝘆 𝗯𝘂𝗴 𝘆𝗼𝘂 𝗳𝗼𝘂𝗻𝗱 𝘀𝗲𝗻𝗱 𝗮 𝗺𝗲𝘀𝘀𝗮𝗴𝗲 𝗵𝗲𝗿𝗲 𝗗𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿 : @fahimhossen27")
 @bot.callback_query_handler(func=lambda call: call.data == 'stop')
-def handle_stop(call):
+def handlet_stop(call):
     bot.stop_polling()
 @bot.message_handler(content_types=["document"])
 def main(message):
@@ -68,7 +68,7 @@ def main(message):
 				cm3 = types.InlineKeyboardButton(f"• ✅ 𝗔𝗽𝗿𝗼𝘃𝗲𝗱 : [ {live} ] •", callback_data='x')
 				cm4 = types.InlineKeyboardButton(f"• ❌ 𝗗𝗲𝗰𝗹𝗶𝗻𝗲𝗱 : [ {dd} ] •", callback_data='x')
 				cm5 = types.InlineKeyboardButton(f"• 📊 𝗧𝗼𝘁𝗮𝗹 : [ {total} ] •", callback_data='x')
-				cm6 = types.InlineKeyboardButton(f"• 𝗦𝘁𝗼𝗽 •", callback_data='stop')
+				cm6 = types.InlineKeyboardButton(f"• 𝗦𝘁𝗼𝗽 •", call.data='stop')
 				
 				mes.add(cm1, cm2, cm3, cm4, cm5, cm6)
 				bot.edit_message_text(chat_id=message.chat.id, message_id=ko, text=f'''𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 𝗬𝗼𝘂𝗿 𝗙𝗶𝗹𝗲.... 🗃️''', reply_markup=mes)
