@@ -22,9 +22,10 @@ def load_approved_users():
     except FileNotFoundError:
         return set()
 
-def save_approved_user(user_id):
-    with open(APPROVED_USERS_FILE, 'a') as f:
-        f.write(f"{user_id}\n")
+def save_approved_users(users):
+    with open(APPROVED_USERS_FILE, 'w') as f:
+        for user_id in users:
+            f.write(f"{user_id}\n")
 
 approved_users = load_approved_users()
 
@@ -41,12 +42,28 @@ def handle_approve(message):
         try:
             user_id_to_approve = message.text.split()[1]
             approved_users.add(user_id_to_approve)
-            save_approved_user(user_id_to_approve)
+            save_approved_users(approved_users)
             bot.reply_to(message, f"User {user_id_to_approve} has been approved.")
         except IndexError:
             bot.reply_to(message, "Please provide a user ID to approve.")
     else:
         bot.reply_to(message, "You are not authorized to approve users.")
+
+@bot.message_handler(commands=['remove'])
+def handle_remove(message):
+    if message.chat.id == ADMIN_CHAT_ID:
+        try:
+            user_id_to_remove = message.text.split()[1]
+            if user_id_to_remove in approved_users:
+                approved_users.remove(user_id_to_remove)
+                save_approved_users(approved_users)
+                bot.reply_to(message, f"User {user_id_to_remove} has been removed.")
+            else:
+                bot.reply_to(message, "User ID not found in the approved list.")
+        except IndexError:
+            bot.reply_to(message, "Please provide a user ID to remove.")
+    else:
+        bot.reply_to(message, "You are not authorized to remove users.")
 
 @bot.message_handler(commands=['stop'])
 def handle_stop(message):
