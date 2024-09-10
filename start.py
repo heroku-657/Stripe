@@ -3,7 +3,7 @@ import telebot
 from telebot import types
 from gatet import Tele 
 
-token = 'YOUR_TELEGRAM_BOT_TOKEN'
+token = '7383314239:AAHFal_jdJ9PAIsx9GxkYSVrkeaVdDwuPyQ'
 bot = telebot.TeleBot(token, parse_mode="HTML")
 
 # Admin chat ID for approval
